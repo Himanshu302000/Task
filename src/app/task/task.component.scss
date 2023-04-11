@@ -1,0 +1,55 @@
+body {font-family: "Lato", sans-serif;}
+
+.sidebar {
+height: 100%;
+width: 200px;
+position: fixed;
+z-index: 1;
+top: 0;
+left: 0;
+background-color: #111;
+overflow-x: hidden;
+padding-top: 16px;
+}
+
+.sidebar a {
+padding: 6px 8px 6px 16px;
+text-decoration: none;
+font-size: 20px;
+color: #818181;
+display: block;
+}
+
+.sidebar a:hover {
+color: gold;
+}
+
+
+.main {
+margin-left: 160px; 
+padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+.sidebar {padding-top: 15px;}
+.sidebar a {font-size: 18px;}
+}
+
+.avatar {
+vertical-align: middle;
+width: 150px;
+height: 150px;
+border-radius: 50%;
+// padding-right: 20px;
+margin-bottom: 30px;
+}
+
+.column-half{
+  float: left;
+  width: 50%;
+  padding: 0 20px;
+  // box-sizing: border-box;
+  // border: solid 1px #ccc;
+  text-align: center;
+}
+

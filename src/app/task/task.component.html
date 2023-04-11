@@ -1,0 +1,109 @@
+<div class="row" >
+  <div class="col-md-2" >
+
+    <ul class="sidebar">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+
+      <a routerLink="/dashboard" class="list-group-item">Dashboard</a>
+  
+      <a routerLink="/task" class="list-group-item">Task</a>
+      <a routerLink="" class="list-group-item">Logout</a>
+    </ul>
+  </div>
+  <div class="col-md-10">
+     
+    
+ 
+
+<div >
+  <div>
+    <u><h1 style="text-align: center;">Task Management </h1></u>
+  </div>
+  <div>
+      <h4 style="text-align: center;">Create Task</h4>
+      <hr/>
+      <div class="card card-body bg-light" style="margin-right: 17px;">
+          <form class="form-horizontal">
+            <div class="row">
+              <div class=" column-half "  >
+                  <label >Name</label>
+                  <input type="text" [(ngModel)]="taskname" [ngModelOptions]="{standalone: true}"  class="form-control" >
+              </div>
+              <div class=" column-half" >
+                  <label>Description</label>
+                  <input type="text"  [(ngModel)]="taskdetail" [ngModelOptions]="{standalone: true}" class="form-control" >
+              </div>
+              </div>
+              <br/>
+              <div style="text-align: center;">
+                  <button type="reset" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;">Clear</button> &nbsp;
+                  <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;" (click)="register()">Save</button>
+              </div>
+
+          </form>
+      </div>
+    </div>
+  <div>
+
+      <h4 style="text-align: center;">Task List</h4>
+
+
+        <div class="card card-body bg-light" style="max-height: 500px;padding-bottom: 220px;
+        overflow-y: scroll;">
+          <table class="table">
+              <thead>
+                  <tr>
+                      <th scope="col">#</th>
+                      <th scope="col">Name</th>
+                      <th scope="col">Task Details</th>
+                   
+                      <th scope="col">  Priority</th>
+                  </tr>
+              </thead>
+
+              <tbody>
+                <tr *ngIf="TaskArray.length ==0">
+                  <td colspan="5" style="text-align: center"><h2>No Tasks Yet! Do Some Work</h2></td>
+                </tr>
+                  <tr *ngFor="let TaskItem of TaskArray">
+                      <th scope="row">{{TaskItem.taskid}}</th>
+                      <td>{{TaskItem.taskname  | uppercase}}</td>
+                      <td>{{TaskItem.taskdetail }}</td>
+                    
+                      <td>
+                            <ion-select aria-label="priority" placeholder="Select Priority">
+                              <ion-select-option value="yes">Yes</ion-select-option>
+                              <ion-select-option value="no">No</ion-select-option>
+
+                            </ion-select>
+                          
+
+
+                      </td>
+                   
+
+
+                      <td>
+                        <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;" (click)="setUpdate(TaskItem)">Edit</button> &nbsp;
+
+                        <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;" (click)="setDelete(TaskItem)">Compelete</button>
+                       
+                      </td>
+                  </tr>
+
+
+              </tbody>
+
+          </table>
+      </div>
+
+
+
+
+
+
+
+  </div>
+</div>
+</div>
+</div>

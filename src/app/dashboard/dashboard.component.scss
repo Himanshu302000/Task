@@ -1,0 +1,106 @@
+
+
+.main {
+    position: absolute;
+    top: 60px;
+    width: 100%;
+    min-height: calc(100vh - 60px);
+    left: 15px;
+    
+}
+
+.cards {
+    width: 100%;
+    padding: 35px 20px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-gap: 20px;
+}
+
+.cards .card {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color:black;
+    border: 40px;
+    border-radius: 60px;
+    box-shadow: 60px 30px 60px rgba(235, 5, 5, 0.08);
+    border-color: black ;
+    
+    
+    
+}
+
+.number {
+    font-size: 40px;
+    font-weight: 500;
+
+    font-weight: lighter;
+    font-family: cursive;
+  
+    
+  
+  
+ 
+}
+
+
+
+.icon-box i {
+    font-size: 45px;
+    color: black;
+}
+
+
+
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: goldenrod;
+}
+
+
+.main {
+  margin-left: 180px; 
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  // padding-right: 20px;
+  margin-bottom: 30px;
+}
+
+
+
+
+
+
+
