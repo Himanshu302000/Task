@@ -1,21 +1,30 @@
-
 <div class="body">
-<div class="container" id="container" style="margin-top: 9%;">
-    <div class="form-container log-in-container">
-        <form (submit)="login()">
-            <h1>Login</h1>
-            <input type="email" placeholder="Email" required />
-            <input type="password" placeholder="Password" required  />
-          
-            <button type="submit">Login</button>
+<div class="login-page" style="padding-bottom: 30px;">
+      <div class="avatar">
+        <img src="https://cdn.pixabay.com/photo/2014/04/02/14/10/female-306407_960_720.png" alt="Avatar">
+      </div>
+      <div class="form">
+        <h2>Login</h2>
+        <form [formGroup]="capForm">
+          <label>Email</label>
+          <input type="text" placeholder="Email" formControlName="email" name="name" >
+         
+          <label>Password</label>
+          <input type="password" placeholder="Password" formControlName="password" name="password">
+       
+          <ngx-recaptcha2 #captchaElemt
+    [siteKey]="siteKey" 
+    formControlName="recaptcha" name="recaptcha">
+  </ngx-recaptcha2>
+
+  <br>
+          <button  (click)="login()">Ok</button>
         </form>
+        <p class="message">Not registered? <a routerLink="/signup">Create an account</a></p>
+        
+        
+      </div>
     </div>
-    <div class="overlay-container">
-        <div class="overlay">
-            <div class="overlay-panel overlay-right">
-                
-            </div>
-        </div>
     </div>
-</div>
-</div>
+    
+ 

@@ -1,0 +1,81 @@
+.sidebar {
+  height: 100%;
+  width: 200px;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  left: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  padding-top: 16px;
+}
+
+.sidebar a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 20px;
+  color: #818181;
+  display: block;
+}
+
+.sidebar a:hover {
+  color: goldenrod;
+}
+.main {
+  margin-left: 180px; 
+  padding: 0px 10px;
+}
+
+@media screen and (max-height: 450px) {
+  .sidebar {padding-top: 15px;}
+  .sidebar a {font-size: 18px;}
+}
+
+.avatar {
+  vertical-align: middle;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  // padding-right: 20px;
+  margin-bottom: 30px;
+}
+/* Add this CSS in your .scss or .css file */
+
+/* CSS class for red row color */
+
+#tablebody {
+  font-family: Arial, Helvetica, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+#tablebody td, #tablebody th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+#tablebody tr:nth-child(even){background-color: #f2f2f2;}
+
+#tablebody tr:hover {background-color: #ddd;}
+
+#tablebody th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: black;
+  color: white;
+}
+.body{
+  background-color:rgb(255, 242, 204);
+}
+.active {
+  background-color: rgb(68, 68, 60); 
+}
+
+
+
+
+
+
+
+

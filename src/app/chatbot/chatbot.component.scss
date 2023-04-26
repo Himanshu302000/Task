@@ -1,0 +1,103 @@
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background-color: transparent;
+	// background-image: url("https://cdn.pixabay.com/photo/2016/06/02/02/33/triangles-1430105_960_720.png");
+  background-image: url("https://www.theactuarymagazine.org/wp-content/uploads/2020/12/ZhaoWang-1011052178.jpg"); 
+  filter: blur(0.4px);
+
+  }
+  
+  .chat-box {
+    display: flex;
+    flex-direction: column;
+    // justify-content: flex-end;
+    align-items: flex-start;
+    height: 70%;
+    // width: 80%;
+    // border: 1px solid #ccc;
+    // border-radius: 10px;
+    padding: 10px;
+    overflow-y: scroll;
+    // scrollbar-width: hide;
+     height: 420px; /* set the height of the chat box */
+    //  padding-right: 120px;
+
+  
+    
+  }
+  
+  .chat-message {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    width: 100%;
+  }
+  
+  .message {
+    padding: 5px 10px;
+    border-radius: 10px;
+    max-width: 70%;
+  }
+  
+  .message.left {
+    background-color: #f1f0f0;
+    margin-left: 10px;
+  }
+  
+  .message.right {
+    // background-color: #4CAF50;
+    background-color: black;
+    color: white;
+    margin-right: 10px;
+    align-self: flex-end;
+  }
+  
+  .input-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 93%;
+    margin-top: 10px;
+  }
+  
+  .input-box input {
+    height: 40px;
+    width: 70%;
+    padding: 10px;
+    border-radius: 20px;
+    border: none;
+    font-size: 16px;
+    margin-right: 10px;
+  }
+  
+  .input-box button {
+    height: 40px;
+    width: 20%;
+    border-radius: 20px;
+    border: none;
+    // background-color: #4CAF50;
+    background-color: black;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .input-box button:hover {
+    background-color: #3e8e41;
+  }
+
+
+  ///////////////////////////////////////////////////////////////////////////////////////
+  /// 
+  
+
+
+
+

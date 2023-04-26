@@ -1,0 +1,44 @@
+<div class="body">
+<div class="row"  >
+<div class="col-md-2" style="background-color:rgb(255, 242, 204)">
+  
+  <ul class="sidebar">
+    <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+    <span class="username" style="color: gold;padding: 20PX; font-size: large;">
+  <u> HELLO  {{name}}!</u> 
+    </span>
+
+    <a routerLink="/dashboard/{{userId}}"  routerLinkActive="active"   class="list-group-item"><ion-icon name="home-outline"></ion-icon> Dashboard </a>
+    <a routerLink="/task/{{userId}}" routerLinkActive="active" class="list-group-item"><ion-icon name="analytics-outline"></ion-icon> Task </a>
+    <a routerLink="/delete/{{userId}}" routerLinkActive="active" class="list-group-item"><ion-icon name="archive-outline"></ion-icon> History </a>
+    <a routerLink=""  class="list-group-item"><ion-icon name="log-out-outline"></ion-icon> Logout </a>
+  </ul>
+</div>
+<div class="col-md-10" style="background-color:rgb(255, 242, 204); margin-bottom: 400px;">
+  <h4 style="text-align: center;">Task History</h4>
+  <div class=" card" style="max-height: 600px ;padding-bottom: 20px; overflow-y: scroll;margin-right: 3rem;">
+    <table  id="tablebody">
+      <thead>
+        <tr>
+          <th scope="col">S.no</th>
+          <th scope="col">Name</th>
+          <th scope="col">Task Details</th>
+          <th scope="col">Delete-Date</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let TaskItem of TaskArray" >
+          <th scope="row">{{ TaskItem.taskHistoryId}}</th>
+          <td>{{ TaskItem.taskName }}</td>
+          <td>{{ TaskItem.taskDetail }}</td>
+          <td>{{TaskItem.date }}</td>
+      
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+</div>
+

@@ -1,109 +1,116 @@
-<div class="row" >
-  <div class="col-md-2" >
-
-    <ul class="sidebar">
-      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
-
-      <a routerLink="/dashboard" class="list-group-item">Dashboard</a>
-  
-      <a routerLink="/task" class="list-group-item">Task</a>
-      <a routerLink="" class="list-group-item">Logout</a>
-    </ul>
-  </div>
-  <div class="col-md-10">
-     
-    
- 
-
-<div >
-  <div>
-    <u><h1 style="text-align: center;">Task Management </h1></u>
-  </div>
-  <div>
-      <h4 style="text-align: center;">Create Task</h4>
-      <hr/>
-      <div class="card card-body bg-light" style="margin-right: 17px;">
+<div class="body">
+  <div class="row">
+    <div class="col-md-2" style="background-color:rgb(255, 242, 204)">
+      <ul class="sidebar">
+        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+        <span class="username" style="color: gold;padding: 20PX; font-size: large;">
+          <u> HELLO {{name}}!</u>
+        </span>
+        <a routerLink="/dashboard/{{userId}}"  routerLinkActive="active"   class="list-group-item"><ion-icon name="home-outline"></ion-icon> Dashboard </a>
+        <a routerLink="/task/{{userId}}" routerLinkActive="active" class="list-group-item"><ion-icon name="analytics-outline"></ion-icon> Task </a>
+        <a routerLink="/delete/{{userId}}" routerLinkActive="active" class="list-group-item"><ion-icon name="archive-outline"></ion-icon> History </a>
+        <a routerLink=""  class="list-group-item"><ion-icon name="log-out-outline"></ion-icon> Logout </a>
+      </ul>
+    </div>
+    <div class="col-md-10" style="background-color:rgb(255, 242, 204); margin-bottom: 400px;">
+      <div>
+        <div>
+          <u>
+            <h1 style="text-align: center;">Task Management </h1>
+          </u>
+        </div>
+        <h4 style="text-align: center;">Create Task</h4>
+        <hr />
+        <div class="card " style="margin-right: 50px; ">
           <form class="form-horizontal">
             <div class="row">
-              <div class=" column-half "  >
-                  <label >Name</label>
-                  <input type="text" [(ngModel)]="taskname" [ngModelOptions]="{standalone: true}"  class="form-control" >
+              <div class="column-half">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="task.taskname" [ngModelOptions]="{standalone: true}" class="form-control">
               </div>
-              <div class=" column-half" >
-                  <label>Description</label>
-                  <input type="text"  [(ngModel)]="taskdetail" [ngModelOptions]="{standalone: true}" class="form-control" >
+              <div class="column-half">
+                <label>Description</label>
+                <input type="text" [(ngModel)]="task.taskdetail" [ngModelOptions]="{standalone: true}" class="form-control">
               </div>
+              <div class="column-half">
+                <label>Target-Date</label>
+                <input type="date" [(ngModel)]="task.targetDate" [ngModelOptions]="{standalone: true}" class="form-control"
+                  min="{{today | date:'yyyy-MM-dd'}}">
               </div>
-              <br/>
+              <div class="priority-row">
+                <p>Priority</p>
+                <select [(ngModel)]="task.priority" name="priority" id="select">
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <br />
               <div style="text-align: center;">
-                  <button type="reset" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;">Clear</button> &nbsp;
-                  <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;" (click)="register()">Save</button>
+                <button type="reset" class="btn"
+                  style="background-color: rgb(6, 6, 6); color: yellow; margin-bottom: 8px;">Clear</button> &nbsp;
+                <button *ngIf="currentTaskID.length!==0 else other" type="button" class="btn"
+                  style="background-color: rgb(6, 6, 6); color: yellow;margin-bottom: 8px;"
+                  (click)="UpdateRecords()">Update</button>
+                <ng-template #other>
+                  <button type="button" class="btn"
+                    style="background-color: rgb(6, 6, 6); color: yellow;margin-bottom: 8px;"
+                    (click)="register()">Save</button>
+                </ng-template>
               </div>
-
+            </div>
           </form>
+        </div>
+
+      </div>
+    <h4 style="text-align: center;">Task List</h4>
+      <div class="card " style="max-height: 300px; 
+        overflow-y: scroll; margin-right: 32px; ">
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Name</th>
+              <th scope="col">Task Details</th>
+              <th scope="col">Date</th>
+              <th scope="col">Target Date</th>
+
+
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr *ngIf="TaskArray.length ==0">
+              <td colspan="5" style="text-align: center">
+                <h2>No Tasks Yet! Do Some Work</h2>
+              </td>
+            </tr>
+            <tr *ngFor="let TaskItem of TaskArray"
+              [ngClass]="{'red-row': TaskItem.priority ===true, 'blue-row': TaskItem.priority === false}">
+              <th scope="row">{{TaskItem.taskid}}</th>
+              <td>{{TaskItem.taskname | uppercase}}</td>
+              <td>{{TaskItem.taskdetail }}</td>
+              <td>{{TaskItem.date }}</td>
+              <td>{{TaskItem.targetDate }}</td>
+
+
+              <td>
+                <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;"
+                  (click)="setUpdate(TaskItem)">Edit</button> &nbsp;
+
+                <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;"
+                  (click)="setcomplete(TaskItem)">Compelete</button> &nbsp;
+
+
+
+              </td>
+            </tr>
+
+
+          </tbody>
+
+        </table>
       </div>
     </div>
-  <div>
-
-      <h4 style="text-align: center;">Task List</h4>
-
-
-        <div class="card card-body bg-light" style="max-height: 500px;padding-bottom: 220px;
-        overflow-y: scroll;">
-          <table class="table">
-              <thead>
-                  <tr>
-                      <th scope="col">#</th>
-                      <th scope="col">Name</th>
-                      <th scope="col">Task Details</th>
-                   
-                      <th scope="col">  Priority</th>
-                  </tr>
-              </thead>
-
-              <tbody>
-                <tr *ngIf="TaskArray.length ==0">
-                  <td colspan="5" style="text-align: center"><h2>No Tasks Yet! Do Some Work</h2></td>
-                </tr>
-                  <tr *ngFor="let TaskItem of TaskArray">
-                      <th scope="row">{{TaskItem.taskid}}</th>
-                      <td>{{TaskItem.taskname  | uppercase}}</td>
-                      <td>{{TaskItem.taskdetail }}</td>
-                    
-                      <td>
-                            <ion-select aria-label="priority" placeholder="Select Priority">
-                              <ion-select-option value="yes">Yes</ion-select-option>
-                              <ion-select-option value="no">No</ion-select-option>
-
-                            </ion-select>
-                          
-
-
-                      </td>
-                   
-
-
-                      <td>
-                        <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;" (click)="setUpdate(TaskItem)">Edit</button> &nbsp;
-
-                        <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: yellow;" (click)="setDelete(TaskItem)">Compelete</button>
-                       
-                      </td>
-                  </tr>
-
-
-              </tbody>
-
-          </table>
-      </div>
-
-
-
-
-
-
 
   </div>
-</div>
-</div>
 </div>

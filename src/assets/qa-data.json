@@ -1,0 +1,60 @@
+[  {    "question": "What is your name?",   
+        "answer": "My name is Chatbot."  
+    }, 
+    {   
+     "question": "How are you?",  
+      "answer": "I am a chatbot, so I do not have feelings. But thanks for asking!" 
+     },  
+     {   
+        "question": "TELL ME ABOUT YOURSELF?",  
+         "answer": "I am a chatbot,i am here to help you with this app" 
+        },  
+    {    
+      "question": "What do you do?",    
+      "answer": "I am here to answer your questions." 
+    },
+    {    
+        "question": "Hello",    
+        "answer": "Hello how can i help you today ?" 
+      },
+ 
+    {
+      "question": "What is task management?",
+      "answer": "Task management is the process of organizing, prioritizing, and tracking tasks in order to achieve specific goals."
+    },
+    {
+        "question": "What does this app do?",
+        "answer": "This app helps you to in organizing, prioritizing, and tracking tasks "
+      },
+    {
+      "question": "How can a task management tool help me be more productive?",
+      "answer": "A task management tool can help you prioritize tasks, set deadlines, and track progress, which can ultimately help you be more productive and efficient."
+    },
+    {
+      "question": "What are some common features of a task management tool?",
+      "answer": "Some common features of a task management tool include task lists, due dates, task prioritization, email reminders."
+    },
+    {
+      "question": "How do I create a new task?",
+      "answer": "To create a new task, simply click the \"Add Task\" button and enter a task name, due date, and any additional details."
+    },
+    {
+      "question": "How do I prioritize tasks?",
+      "answer": "You can prioritize tasks by setting deadlines and assigning a level of importance to each task."
+    },
+    {
+      "question": "How do I track progress on my tasks?",
+      "answer":"Currently you can't but we are working on it"
+    },
+    {
+      "question": "Can I get notification?",
+      "answer": "Yes, after completing and adding the task you will get email notification"
+    },
+    {
+      "question": "How do I edit or delete a task?",
+      "answer": "To edit or delete a task, simply click on the task and select the \"Edit\" or \"Delete\" option."
+    },
+    {
+      "question": "How can I ensure that I don't forget important tasks?",
+      "answer": "You can use a task management tool that allows you to set reminders for important tasks or deadlines."
+    }]

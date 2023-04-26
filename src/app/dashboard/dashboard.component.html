@@ -1,36 +1,52 @@
-<div class="row" >
-    <div class="col-md-2" >
-  
-      <ul class="sidebar">
-        <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
-  
-        <a routerLink="/dashboard" class="list-group-item">Dashboard</a>
-    
-        <a routerLink="/task" class="list-group-item">Task</a>
-        <a routerLink="" class="list-group-item">Logout</a>
-      </ul>
-    </div>
-    <div class="col-md-10">
-<div class="container">
-    <div class="topbar" style="margin-left: 482px;">
-        
-            <h1 style="font-weight: bolder;">YOUR TASKS </h1>
-        
-    </div>
-   
-    <div class="main" style="background-image: url(https://www.theactuarymagazine.org/wp-content/uploads/2020/12/ZhaoWang-1011052178.jpg); background-repeat: no-repeat; background-size: cover; filter: blur(3px);">
-    </div>
-        <div class="cards">
-            <div class="card" *ngFor="let TaskItem of TaskArray">
-                <div class="card-content"  >
-                    <div class="number "style="color:white; ">{{TaskItem.taskname  | uppercase}}</div>
-                    <!-- <ion-button  (click)="seeMore()">Know more..</ion-button> -->
-                    <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: gray" (click)="seeMore()">Know More...</button>
-                       
-                </div>
+<div class="row">
+  <div class="col-md-2">
+
+    <ul class="sidebar">
+      <img src="https://www.w3schools.com/howto/img_avatar.png" alt="Avatar" class="avatar">
+      <span class="username" style="color: gold;padding: 20PX; font-size: large;">
+        <u> HELLO {{name}}!</u>
+      </span>
+
+      <a routerLink="/dashboard/{{userId}}"  routerLinkActive="active"   class="list-group-item"><ion-icon name="home-outline"></ion-icon> Dashboard </a>
+      <a routerLink="/task/{{userId}}" routerLinkActive="active" class="list-group-item"><ion-icon name="analytics-outline"></ion-icon> Task </a>
+      <a routerLink="/delete/{{userId}}" routerLinkActive="active" class="list-group-item"><ion-icon name="archive-outline"></ion-icon> History </a>
+      <a routerLink="" class="list-group-item"><ion-icon name="log-out-outline"></ion-icon> Logout </a>
+    </ul>
+  </div>
+  <div class="col-md-10">
+    <div class="container">
+      <div class="topbar" style="margin-left: 482px;">
+
+        <h1 style="font-weight: bolder;">YOUR TASKS </h1>
+
+      </div>
+
+      <div class="main"
+        style="background-image: url(https://www.theactuarymagazine.org/wp-content/uploads/2020/12/ZhaoWang-1011052178.jpg); background-repeat: no-repeat; background-size: cover; filter: blur(3px);">
+      </div>
+      <div class="cards">
+        <div class="card" *ngFor="let TaskItem of TaskArray">
+          <div class="card-content">
+            <div class="number " style="color:white; ">
+              <p>{{TaskItem.taskname | uppercase}}</p>
             </div>
+            <button type="button" class="btn" style="background-color: rgb(6, 6, 6); color: gray"
+              (click)="seeMore()">Know More...</button>
+
+          </div>
         </div>
-   
+
+      </div>
+
+    </div>
+  </div>
+  
 </div>
+
+<div class="fab-container">
+  <button class="add-btn" (click)="Button()">
+    <ion-icon name="chatbubbles-outline"></ion-icon>
+  </button>
 </div>
-</div>
+
+

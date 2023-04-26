@@ -1,0 +1,27 @@
+  <div class="container">
+    <button class="close-btn" style=" margin-left: 20rem;" (click)="dismiss()">
+      <ion-icon name="close-circle-outline"></ion-icon>
+    </button>
+  
+    <div class="chat-box" #chatBox>
+      <div class="chat-message" *ngFor="let message of messages">
+        <div class="message" [ngClass]="{'left': message.from === 'bot', 'right': message.from === 'user'}">
+          {{ message.text }}
+        </div>
+      </div>
+    </div>
+  
+    <div class="input-box">
+      <input type="text" [(ngModel)]="newMessage" (keyup.enter)="sendMessage()" placeholder="Type your message here...">
+      <button (click)="sendMessage()"><ion-icon name="send-outline"></ion-icon></button>
+    </div>
+  </div>
+  
+  
+
+
+  
+
+
+
+

@@ -1,5 +1,3 @@
-
-
 .main {
     position: absolute;
     top: 60px;
@@ -8,7 +6,6 @@
     left: 15px;
     
 }
-
 .cards {
     width: 100%;
     padding: 35px 20px;
@@ -16,7 +13,6 @@
     grid-template-columns: repeat(4, 1fr);
     grid-gap: 20px;
 }
-
 .cards .card {
     padding: 20px;
     display: flex;
@@ -27,33 +23,20 @@
     border-radius: 60px;
     box-shadow: 60px 30px 60px rgba(235, 5, 5, 0.08);
     border-color: black ;
-    
-    
-    
-}
+  }
 
 .number {
-    font-size: 40px;
+    font-size: 20px;
     font-weight: 500;
 
     font-weight: lighter;
     font-family: cursive;
-  
     
-  
-  
- 
 }
-
-
-
 .icon-box i {
     font-size: 45px;
     color: black;
 }
-
-
-
 .sidebar {
   height: 100%;
   width: 200px;
@@ -77,8 +60,6 @@
 .sidebar a:hover {
   color: goldenrod;
 }
-
-
 .main {
   margin-left: 180px; 
   padding: 0px 10px;
@@ -99,6 +80,42 @@
 }
 
 
+
+.fab-container {
+  position: fixed;
+  bottom: 20px;
+  right: 1%;
+  transform: translateX(-50%);
+  z-index: 999;
+}
+
+.add-btn {
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #007bff;
+  color: white;
+  text-align: center;
+  font-size: 24px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.3);
+  transition: transform 0.2s ease-in-out;
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+.add-icon {
+  display: inline-block;
+  margin-top: 2px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.active {
+  background-color: rgb(68, 68, 60); 
+}
 
 
 

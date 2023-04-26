@@ -1,0 +1,23 @@
+<div class="body">
+<div class="login-page" style="padding-bottom: 30px;">
+    <div class="avatar">
+      <img src="https://cdn.pixabay.com/photo/2014/04/02/14/10/female-306407_960_720.png" alt="Avatar">
+    </div>
+    <div class="form">
+      <h2>Signup</h2>
+      <form>
+        <label> Email</label>
+        <input type="text" placeholder="email" [(ngModel)]="user.email" name="email">
+        <label>Username</label>
+        <input type="text" placeholder="Username" [(ngModel)]="user.userName" name="username">
+        <label>Password</label>
+        <input type="password" placeholder="Password" [(ngModel)]="user.password" name="password" >
+        <button  (click)="signup()" >Sign In</button>
+      </form>
+ 
+      
+    </div>
+  </div>
+  </div>
+
+

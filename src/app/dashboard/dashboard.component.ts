@@ -1,6 +1,11 @@
 import { Component } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
+//import { DashboardServiceService } from './dashboard-service.service';
+import { ModalController } from '@ionic/angular';
+import { ChatbotComponent } from '../chatbot/chatbot.component';
+import { User } from '../user';
+import { MainServiceService } from '../main-service.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,32 +13,45 @@ import { Router } from '@angular/router';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent {
-  TaskArray : any[] =[];
-  taskname:string = " ";
-  constructor(private http: HttpClient,public router:Router) {  //This line defines the constructor for the DashboardComponent class. 
-    //It takes two parameters: http and router. http is an instance of the HttpClient class that will be used to make HTTP requests.
-    // router is an instance of the Router class that will be used for navigation.
+  TaskArray: any;
+  taskname: string = " ";
+  name: any = '';
+  userId: number = 0;
 
-    this.getAllTask();
-  }
-
-  getAllTask()
-  {
-    
-    this.http.get("http://localhost:8080/api/v1/task/getAllTask")
-  
-    .subscribe((resultData: any)=> //- This line subscribes to the result of the HTTP request
-    // and defines a callback function to handle the response. 
-    //The response is logged to the console and then the `TaskArray` is set to the result data.
-    {
-       
-        console.log(resultData);
-        this.TaskArray = resultData;
-    });
-  }
- seeMore(){  //This line defines a method `seeMore` which will be called when a button or link is clicked to navigate to a different view.
-
-  this.router.navigateByUrl('/task')
+  constructor(private api: MainServiceService, public router: Router, private modelService: ModalController,private route:ActivatedRoute) {
+    console.log(this.userId);
  }
+
+  getAllName() {
+    
+    this.api.getAllTaskName(this.userId).subscribe(res => {
+      this.TaskArray = res;
+      console.warn(this.TaskArray);
+
+
+    })
+  }
+  ngOnInit(): void {
+    this.userId=this.route.snapshot.params['id'];
+    this.name = sessionStorage.getItem('name');
+    console.log(this.userId+"*******************");
+    this.getAllName();
+ }
+
+  seeMore() {
+
+    this.router.navigateByUrl('/task/:id')
+  }
+
+  async Button() {
+    const dialog = await this.modelService.create({
+      component: ChatbotComponent,
+      cssClass: 'modalCss' ,
+      backdropDismiss: false,
+    });
+    dialog.onDidDismiss();
+    return await dialog.present();
+
+  }
 
 }
