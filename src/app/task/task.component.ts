@@ -27,8 +27,9 @@ export class TaskComponent {
   userId:number=-1;
   task:Task=new Task();
   taskHistory:TaskHistory=new TaskHistory();
- taskUpdate:Task=new Task();
- id:any;
+  taskUpdate:Task=new Task();
+  validUpdate:boolean=false;
+
   
   constructor(
     private api: MainServiceService,
@@ -47,12 +48,10 @@ export class TaskComponent {
 
   // REGISTER NEW TASK
   register() {
+    this.task.userId=this.userId;
     console.log(this.task.userId+"------------------------------->")
 
     this.userId=this.route.snapshot.params['id'];
-    // this.task.taskname='';
-    // this.task.taskdetail='';
-    // this.task.targetDate='';
     if (this.task.taskname.length === 0 ||this.task.taskdetail.length === 0 ||this.task.targetDate.length === 0) {
       alert("Fill all fields");
       return;
@@ -81,50 +80,61 @@ export class TaskComponent {
          
       this.getAllTask();
     });
-   
   }
 
   // UPDATE API
   ///AFTER EDIT /////
-    setUpdate(data:any) {
-      this.taskUpdate=data;
-      this.id = data.taskid;
-      console.log(data);
-      // this.task = data;
-      // console.log(this.taskUpdate);
+    setUpdate(data: any) {
+
+
+    // this.taskname = data.taskname;
+    // this.taskdetail = data.taskdetail;
+    // this.priority = data.priority;
+    // this.currentTaskID = data.taskid;
+    // this.targetDate = data.targetDate;
+
+    console.log(data);
+      this.taskUpdate.taskId=data.taskid;
+      this.taskUpdate.targetDate=data.targetDate;
+      this.taskUpdate.priority=data.priority;
+      this.taskUpdate.taskdetail=data.taskdetail;
+      this.taskUpdate.taskname=data.taskname;
+      this.taskUpdate.userId=this.userId;
+
+
+      this.task.taskId=data.taskid;
+      this.task.targetDate=data.targetDate;
+      this.task.priority=data.priority;
+      this.task.taskdetail=data.taskdetail;
+      this.task.taskname=data.taskname;
+      this.task.userId=this.userId;
+      this.validUpdate=true;
+
+
   }
 
-  UpdateRecords(data:any)
-  {
-    //  let loginData=document.getElementById('loginForm');
-    //  loginData?.addEventListener("submit",(e) =>{
-
-      let userName=(document.getElementById('name') as HTMLInputElement).value;
-      let description=(document.getElementById('description') as HTMLInputElement).value;
-       let DateData=(document.getElementById('dateData') as HTMLInputElement).value;
-      console.log(DateData);
-      let obj={...this.task};
-       obj={
-      ...this.taskUpdate,
-      taskname:userName,
-      taskdetail:description,
-      targetDate:DateData
-     }
-     console.log(obj);
-
-
-    this.api2.UpdateRecords(obj).subscribe(res=>{
-      // console.log(this.taskUpdate);
-      this.api2.getAllTaskName(this.taskUpdate.userId).subscribe(res=>{
-        this.TaskArray=res;
-      })
-    })
+  UpdateRecords() {
+    this.validUpdate=false;
+    console.log(this.task.taskId)
+    // let bodyData = {
+    //   "taskid" : this.currentTaskID,
+    //   "taskname" : this.taskname,
+    //   "taskdetail" : this.taskdetail,
+    //   "priority" : this.priority,
+    //   "targetDate" : this.targetDate
+    // };
+      
+    this.api.UpdateRecords(this.task).subscribe((resultData: any) => {
+      alert("Task Updated");
+      this.getAllTask();
+      this.taskname = '';
+      this.taskdetail = '';
+      this.currentTaskID = '';
+      this.priority = '';
+      this.targetDate = '';
+      this.task=new Task();
+    });
   }
-  resetObj(){
-
-    this.taskUpdate=new Task();
-  }
-  
   ////DELETE////
 
   setDelete(data: any) {
@@ -155,11 +165,6 @@ export class TaskComponent {
     });
     
    
-  }
-  clear(){
-    // this.task.taskname='';
-    // this.task.taskdetail='';
-    // this.task.targetDate='';
   }
   ///SESSION
   ngOnInit(): void {

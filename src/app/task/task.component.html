@@ -21,45 +21,74 @@
         </div>
         <h4 style="text-align: center;">Create Task</h4>
         <hr />
-        <div class="card " style="margin-right: 50px; ">
+        <div class="card " *ngIf="!validUpdate" style="margin-right: 50px; ">
           <form class="form-horizontal" >
             <div class="row">
               <div class="column-half">
                 <label>Name</label>
-                <input type="text" [(ngModel)]="task.taskname" id="name" value={{taskUpdate.taskname}} [ngModelOptions]="{standalone: true}" class="form-control">
+                <input type="text" [(ngModel)]="task.taskname" value={{taskUpdate.taskname}} [ngModelOptions]="{standalone: true}" class="form-control">
               </div>
               <div class="column-half">
                 <label>Description</label>
-                <input type="text" [(ngModel)]="task.taskdetail" id="description" value={{taskUpdate.taskdetail}} [ngModelOptions]="{standalone: true}" class="form-control">
+                <input type="text" [(ngModel)]="task.taskdetail"  value={{taskUpdate.taskdetail}} [ngModelOptions]="{standalone: true}" class="form-control">
               </div>
               <div class="column-half">
                 <label>Target-Date</label>
-                <input type="date" [(ngModel)]="task.targetDate" id="dateData" value={{taskUpdate.targetDate}} [ngModelOptions]="{standalone: true}" class="form-control"
+                <input type="date" [(ngModel)]="task.targetDate"  value={{taskUpdate.targetDate}} [ngModelOptions]="{standalone: true}" class="form-control"
                   min="{{today | date:'yyyy-MM-dd'}}">
               </div>
               <div class="priority-row">
                 <p>Priority</p>
-                <select [(ngModel)]="task.priority" name="priority" id="select">
+                <select [(ngModel)]="task.priority" name="priority">
                   <option value="true">Yes</option>
                   <option value="false">No</option>
                 </select>
               </div>
               <br />
               <div style="text-align: center;">
-                <button type="reset" (click)="resetObj()" class="btn"
+                <button type="reset"  class="btn"
                   style="background-color: rgb(6, 6, 6); color: yellow; margin-bottom: 8px;">Clear</button> &nbsp;
-                <button *ngIf="taskUpdate.taskname.length!==0 else other" type="submit" class="btn"
-                  style="background-color: rgb(6, 6, 6); color: yellow;margin-bottom: 8px;"
-                  (click)="UpdateRecords(task)">Update</button>
-                <ng-template #other>
                   <button type="button" class="btn"
-                    style="background-color: rgb(6, 6, 6); color: yellow;margin-bottom: 8px;"
-                    (click)="register()">Save</button>
-                </ng-template>
+                  style="background-color: rgb(6, 6, 6); color: yellow;margin-bottom: 8px;"
+                  (click)="register()">Save</button>
               </div>
             </div>
           </form>
         </div>
+
+        <div *ngIf="validUpdate" class="card " style="margin-right: 50px; ">
+          <form class="form-horizontal" >
+            <div class="row">
+              <div class="column-half">
+                <label>Name</label>
+                <input type="text" [(ngModel)]="task.taskname"  value={{taskUpdate.taskname}} [ngModelOptions]="{standalone: true}" class="form-control">
+              </div>
+              <div class="column-half">
+                <label>Description</label>
+                <input type="text" [(ngModel)]="task.taskdetail"  value={{taskUpdate.taskdetail}} [ngModelOptions]="{standalone: true}" class="form-control">
+              </div>
+              <div class="column-half">
+                <label>Target-Date</label>
+                <input type="date" [(ngModel)]="task.targetDate" value={{taskUpdate.targetDate}} [ngModelOptions]="{standalone: true}" class="form-control"
+                  min="{{today | date:'yyyy-MM-dd'}}">
+              </div>
+              <div class="priority-row">
+                <p>Priority</p>
+                <select [(ngModel)]="task.priority" name="priority" >
+                  <option value="true">Yes</option>
+                  <option value="false">No</option>
+                </select>
+              </div>
+              <br />
+              <div style="text-align: center;">
+                <button type="reset"  class="btn"
+                  style="background-color: rgb(6, 6, 6); color: yellow; margin-bottom: 8px;">Clear</button> &nbsp;
+                <button  type="submit" class="btn"
+                  style="background-color: rgb(6, 6, 6); color: yellow;margin-bottom: 8px;"
+                  (click)="UpdateRecords()">Update</button>
+              </div>
+            </div>
+          </form>
 
       </div>
     <h4 style="text-align: center;">Task List</h4>

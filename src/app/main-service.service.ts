@@ -1,4 +1,3 @@
-
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { TaskHistory } from './delete/delete.component';
@@ -78,7 +77,7 @@ getAllTask() //show
     {
     
       console.log(bodyData);
-      return this.http.put("http://localhost:8080/api/v1/task/update/"+bodyData.taskid,bodyData)
+      return this.http.put("http://localhost:8080/api/v1/task/update/"+bodyData.taskId,bodyData)
     }
     register(bodyData:any) ///post
     {
